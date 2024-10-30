@@ -517,4 +517,14 @@ nav a:hover::after {
   h3 {
     font-size: 9px;
   }
+
+ .contact-page{
+   flex-direction:column;
+   font-size:medium;
+   text-align:center;
+   min-height:90px;
+}
+.address{
+  text-align: center;
+}
 }
