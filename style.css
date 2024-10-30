@@ -212,13 +212,17 @@ nav a:hover::after {
   color: var(--theme-color);
 }
 
-/* Product Page Styling */
+/* Product & Service Page Styling */
 .product-page,
 .service-page {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   max-width: 1200px;
+}
+
+.product-page {
+  margin-top: -30px;
 }
 
 .service-page {
@@ -229,12 +233,17 @@ nav a:hover::after {
 .services-container {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 320px);
-  grid-template-rows: repeat(2, 300px);
+  grid-template-columns: repeat(4, 250px);
+  grid-template-rows: repeat(2, 280px);
   max-width: 1100px;
   min-height: 400px;
-  margin-top: 20px;
-  gap: 60px;
+  margin-top: 5px;
+  gap: 40px;
+  perspective: 900px;
+}
+
+.services-container {
+  height: 130px;
 }
 
 .product-item,
@@ -247,7 +256,37 @@ nav a:hover::after {
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  animation: float 1.5s linear infinite alternate-reverse;
+  transition: 1s ease-in;
+  backface-visibility: hidden;
+  width: 100%;
+}
+
+.item-1,
+.item-3,
+.item-5 {
+  transform: translateX(0px);
+  animation: showleft 1.2s linear;
+  animation-timeline: view(90% 1%);
+}
+
+.item-2,
+.item-4 {
+  transform: translateX(0px);
+  animation: showRight 1.2s linear;
+  animation-timeline: view(90% 1%);
+}
+
+.product-item::after,
+.services-provides::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 1%;
+  width: 100%;
+  background-color: hsla(0, 39%, 9%, 0.349);
+  box-shadow: 0px -30px 80px 50px black;
+  transition: box-shadow 0.5s ease;
 }
 
 .image-cnt {
@@ -268,6 +307,7 @@ nav a:hover::after {
 }
 
 /* Disappeared */
+
 .product-info,
 .services-info {
   display: flex;
@@ -291,12 +331,17 @@ nav a:hover::after {
   font-size: 18px;
 }
 
-/* Appeared */
+/* Appeared & Disappeared Play*/
+
 .product-item:has(.image-cnt:hover, .product-info:hover) .product-info,
 .services-provides:has(.image-cnt:hover, .services-info:hover) .services-info {
   top: 0px;
 }
 
+.product-item:has(.image-cnt:hover, .product-info:hover)::after,
+.services-provides:has(.image-cnt:hover, .services-info:hover)::after {
+  box-shadow: 0px 0px 0px 0px transparent;
+}
 .product-item:has(.image-cnt:hover, .product-info:hover) .image-cnt #arrow,
 .services-provides:has(.image-cnt:hover, .services-info:hover)
   .image-cnt
@@ -309,7 +354,21 @@ nav a:hover::after {
   top: 0px;
 }
 
-/* Product Page Styling End*/
+/* Product and Services Page Styling End*/
+
+/* Contact Page Styling */
+.contact-page{
+  display: flex;
+  justify-content: space-between;
+  background-color: bisque;
+  padding:10px 40px;
+}
+.address{
+  text-align: right;
+  max-width:400px;
+  width: 100%;
+}
+/* Contact Page Styling End */
 
 /* Animations  */
 @keyframes float {
@@ -321,6 +380,25 @@ nav a:hover::after {
     transform: translateY(5px);
   }
 }
+
+@keyframes showleft {
+  from {
+    transform: rotateY(-90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+@keyframes showRight {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+/* Animation End */
 
 /* For Small Devices */
 @media (max-width: 780px) {
@@ -400,12 +478,43 @@ nav a:hover::after {
   }
 }
 
-/* For Mobile */
+/* For Mobile Devices */
 @media (max-width: 490px) {
+  .cctv-gif {
+    transform: scale(40%) rotateY(180deg) translateX(60px);
+  }
+
   /* Responsive Product Page */
   .product-container,
   .services-container {
-    grid-template-columns: repeat(1, 250px);
-    grid-template-rows: repeat(5, 250px);
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: repeat(5, 120px);
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 240px;
+  }
+
+  .product-item::after,
+  .services-provides::after {
+    height: 1%;
+    width: 100%;
+    background-color: hsla(0, 39%, 9%, 0.349);
+    box-shadow: 0px -1px 20px 8px black;
+  }
+
+  .services-container {
+    height: 120px;
+  }
+
+  .image-cnt #arrow {
+    font-size: 20px;
+  }
+
+  .product-info p,
+  h3,
+  .services-info p,
+  h3 {
+    font-size: 9px;
   }
 }

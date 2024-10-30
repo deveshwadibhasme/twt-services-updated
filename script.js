@@ -7,9 +7,9 @@ const servicesContainer = document.querySelector('.services-container')
 fetch('item.json')
 .then((allItems)=>allItems.json())
 .then((items)=>{
-    items.forEach((item)=>{
+    items.forEach((item,index)=>{
         const div = document.createElement('div')
-        div.className = 'product-item'
+        div.className = `product-item item-${index+1}`
         div.innerHTML = ` 
                 <div class="image-cnt">
                     <img src="${item.img}" alt="">
@@ -27,9 +27,9 @@ fetch('item.json')
 fetch('services.json')
 .then((allServices)=>allServices.json())
 .then((services)=>{
-    services.forEach((service)=>{
+    services.forEach((service,index)=>{
         const div = document.createElement('div')
-        div.className = 'services-provides'
+        div.className = `services-provides item-${index+1}`
         div.innerHTML = ` 
                 <div class="image-cnt">
                     <img src="${service.img}" alt="">
