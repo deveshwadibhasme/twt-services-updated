@@ -234,7 +234,7 @@ nav a:hover::after {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 250px);
-  grid-template-rows: repeat(2, 280px);
+  grid-template-rows: repeat(2, 260px);
   max-width: 1100px;
   min-height: 400px;
   margin-top: 5px;
@@ -266,7 +266,7 @@ nav a:hover::after {
 .item-5 {
   transform: translateX(0px);
   animation: showleft 1.2s linear;
-  animation-timeline: view(90% 1%);
+  animation-timeline: view(90% 0%);
 }
 
 .item-2,
@@ -357,20 +357,47 @@ nav a:hover::after {
 /* Product and Services Page Styling End*/
 
 /* Contact Page Styling */
-.contact-page{
+.contact-page {
   display: flex;
   justify-content: space-between;
   background-color: bisque;
-  padding:10px 40px;
+  padding: 10px 40px;
 }
-.address{
-  text-align: right;
-  max-width:400px;
+
+.img-cnt {
+  min-height: 400px;
+  height: 100%;
+  max-width: 600px;
+}
+
+.img-cnt img {
+  mix-blend-mode: darken;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details {
+  max-width: 500px;
+  width: 100%;
+}
+
+.map-embbed {
+  min-height: 240px;
+  max-width: 400px;
+}
+
+iframe {
+  height: 100%;
   width: 100%;
 }
 /* Contact Page Styling End */
 
 /* Animations  */
+
 @keyframes float {
   0%,
   100% {
@@ -465,10 +492,16 @@ nav a:hover::after {
   /* Responsive Page */
   .product-container,
   .services-container {
+    margin: 0 auto;
     gap: 5px;
-    grid-template-columns: repeat(2, 300px);
-    grid-template-rows: repeat(4, 270px);
+    grid-template-columns: repeat(2, 200px);
+    grid-template-rows: repeat(4, 190px);
   }
+
+  .services-container {
+    height: 200px;
+  }
+
   .product-info p,
   .product-info h3,
   .services-info p,
@@ -476,12 +509,37 @@ nav a:hover::after {
     color: aliceblue;
     font-size: 13px;
   }
+
+  /* Contact Page Responsive */
+
+  .contact-page {
+    padding: 5px 20px;
+    flex-direction: column;
+    min-height: 200px;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .img-cnt {
+    min-height: 200px;
+    height: 100%;
+    max-width: 600px;
+  }
+  .map-embbed {
+    margin: 0 auto;
+    height: 220px;
+  }
 }
 
 /* For Mobile Devices */
 @media (max-width: 490px) {
   .cctv-gif {
-    transform: scale(40%) rotateY(180deg) translateX(60px);
+    transform: scale(70%) rotateY(180deg) translateX(30px);
   }
 
   /* Responsive Product Page */
@@ -500,7 +558,7 @@ nav a:hover::after {
     height: 1%;
     width: 100%;
     background-color: hsla(0, 39%, 9%, 0.349);
-    box-shadow: 0px -1px 20px 8px black;
+    box-shadow: 0px -1px 25px 14px black;
   }
 
   .services-container {
@@ -508,23 +566,13 @@ nav a:hover::after {
   }
 
   .image-cnt #arrow {
-    font-size: 20px;
+    font-size: 30px;
   }
 
   .product-info p,
-  h3,
+  .product-info h3,
   .services-info p,
-  h3 {
+  .services-info h3 {
     font-size: 9px;
   }
-
- .contact-page{
-   flex-direction:column;
-   font-size:medium;
-   text-align:center;
-   min-height:90px;
-}
-.address{
-  text-align: center;
-}
 }

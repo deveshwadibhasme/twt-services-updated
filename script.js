@@ -3,6 +3,13 @@ const header = document.querySelector('header')
 const productContainer = document.querySelector('.product-container')
 const servicesContainer = document.querySelector('.services-container')
 
+menu.addEventListener('click', () => {
+    header.classList.toggle('active')
+})
+menu.addEventListener('touchup', () => {
+    menu.classList.toggle('active')
+    header.classList.toggle('active')
+})
 
 fetch('item.json')
 .then((allItems)=>allItems.json())
@@ -23,7 +30,6 @@ fetch('item.json')
         productContainer.appendChild(div)
     })
 })
-
 fetch('services.json')
 .then((allServices)=>allServices.json())
 .then((services)=>{
@@ -49,17 +55,7 @@ function loader() {
 function scrolling() {
     document.body.style.overflow = 'visible'
 }
-
 window.addEventListener('load', () => {
     setTimeout(loader, 1500)
     setTimeout(scrolling,2000)
-})
-
-menu.addEventListener('click', () => {
-    header.classList.toggle('active')
-})
-
-menu.addEventListener('touchup', () => {
-    menu.classList.toggle('active')
-    header.classList.toggle('active')
 })
